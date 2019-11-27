@@ -67,29 +67,4 @@ public class EnemyController : MonoBehaviour
             Debug.Log("I got Hit!" + ScoreManager.Instance.Score);
         }
     }
-    private void OnTriggerEnter2D(Collider2D c)
-    {
-        if (c.transform.tag == "bordersides")
-        {
-            if (turn)
-            {
-                turn = false;
-            }
-            else
-            {
-                turn = true;
-            }
-        }
-        if (c.transform.tag == "bullet")
-        {
-            ScoreManager.Instance.Score++;
-            Debug.Log("I got Hit!" + ScoreManager.Instance.Score);
-            animator.SetBool("gotHit", true);
-            Destroy(c.gameObject);
-            Destroy(gameObject, .5f);
-            
-
-        }
-    }
-
 }
