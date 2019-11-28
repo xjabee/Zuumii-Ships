@@ -13,7 +13,6 @@ public class EnemyController : MonoBehaviour
     bool turn;
     public float move;
     public Animator animator;
-    ScoreManager scoreManager;
     // Start is called before the first frame update
     void Start()
     {
