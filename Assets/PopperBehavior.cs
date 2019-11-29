@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PopperBehavior : MonoBehaviour
 {
@@ -10,23 +11,39 @@ public class PopperBehavior : MonoBehaviour
     public float turnRateRight;
     [Range(1f, 5f)]
     public float turnRateLeft;
-    bool turn;
     public float move;
     public GameObject Popper;
+    public float teleportRate = 2f;
+    float initXpos;
+    public Animator animator;
+    bool didTeleport = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        InvokeRepeating("Teleport", 0, 5f); ;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void spawn()
+    void Teleport()
     {
-        transform.Translate()
+        StartCoroutine(teleport());
+    }
+
+    IEnumerator teleport()
+    {
+        yield return new WaitForSeconds(.33f);
+        animator.SetBool("IsTeleportingIn", true);
+        yield return new WaitForSeconds(2f);
+        transform.position = new Vector2(Random.Range(-2.29f, 2.31f), transform.position.y - .5f);
+        animator.SetBool("IsTeleportingOut", true);
+        animator.SetBool("IsTeleportingIn", false);
+        yield return new WaitForSeconds(.33f);
+        animator.SetBool("IsTeleportingOut", false);
+
     }
 }

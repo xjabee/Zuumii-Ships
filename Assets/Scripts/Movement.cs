@@ -13,12 +13,10 @@ public class Movement : MonoBehaviour
     public Transform firePosition;
     bool allowfire = true;
     AudioSource bulletSound;
-    bool playBulletSound;
 
     void Start()
     {
         bulletSound = GetComponent<AudioSource>();
-        playBulletSound = true;
     }
 
     // Update is called once per frame
