@@ -46,4 +46,15 @@ public class PopperBehavior : MonoBehaviour
         animator.SetBool("IsTeleportingOut", false);
 
     }
+    private void OnCollisionEnter2D(Collision2D c)
+    {
+        if (c.transform.tag == "bullet")
+        {
+            animator.SetBool("gotHit", true);
+            Destroy(c.gameObject);
+            Destroy(gameObject, .1f);
+            ScoreManager.Instance.Score++;
+            Debug.Log("I got Hit!" + ScoreManager.Instance.Score);
+        }
+    }
 }
