@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [Range (-0.1f, -5f)]
-    public float moveSpeed;
+    public float moveSpeed =-0.5f;
     [Range (-1f, -5f)]
-    public float turnRateRight;
+    public float turnRateRight = -1f;
     [Range (1f, 5f)]
-    public float turnRateLeft;
+    public float turnRateLeft = -1f;
     bool turn;
     public float move;
     public Animator animator;

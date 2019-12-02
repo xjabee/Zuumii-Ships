@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI ScoreBox;
+    public GameObject[] HP;
     ScoreManager scoreManager;
     private static UIManager instance;
     public static UIManager Instance
     {
-        // by calling Instance, you can get the value of instance, but you can't reset it
         get
         {
             return instance;

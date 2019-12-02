@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+
 
 public class PopperBehavior : MonoBehaviour
 {
@@ -16,7 +16,6 @@ public class PopperBehavior : MonoBehaviour
     public float teleportRate = 2f;
     float initXpos;
     public Animator animator;
-    bool didTeleport = true;
     // Start is called before the first frame update
     void Start()
     {
