@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class Movement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    [Range(0.0f, 1f)]
     public int HP = 3;
     public float fireRate = 1f;
     public GameObject bulletPrefab;

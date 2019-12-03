@@ -183,9 +183,10 @@ public class BossBehavior : MonoBehaviour
         }
         else
         {
-            gameManager.GetComponent<AudioSource>().Play();
+            HP = 0;
             Destroy(gameObject);
             Destroy(c.gameObject);
+            gameManager.GetComponent<AudioSource>().Play();
         }
     }
 
