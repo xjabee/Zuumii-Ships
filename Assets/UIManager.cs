@@ -38,8 +38,8 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ScoreBox.text = "Score - " + ScoreManager.Instance.Score * 10;
-        finalScore.text = "Final Score - " + ScoreManager.Instance.Score * 10;
+        ScoreBox.text = "Score - " + ScoreManager.Instance.Score * 100;
+        finalScore.text = "Final Score - " + ScoreManager.Instance.Score * 100;
         StartCoroutine(bossDeath());
     }
     IEnumerator bossDeath()
@@ -48,14 +48,14 @@ public class UIManager : MonoBehaviour
         Debug.Log("Player HP: " + player.HP);
         if (player.HP <= 0)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(.5f);
             winScreen.SetActive(true);
             Time.timeScale = 0;
             Debug.Log("u ded bish");
         }
         if (enemy.HP <= 0)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(.5f);
             loseScreen.SetActive(true);
             Time.timeScale = 0;
             Debug.Log("u ded bish");

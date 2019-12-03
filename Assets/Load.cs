@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 public class Load : MonoBehaviour
 {
     // Start is called before the first frame update
+    void Awake()
+    {
+        Screen.SetResolution(540, 960, false);
+    }
     void Start()
     {
         

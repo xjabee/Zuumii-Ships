@@ -54,6 +54,7 @@ public class PopperBehavior : MonoBehaviour
             Destroy(gameObject, .1f);
             ScoreManager.Instance.Score++;
             Debug.Log("I got Hit!" + ScoreManager.Instance.Score);
+            GameManager.Instance.killCounter++;
         }
     }
 }

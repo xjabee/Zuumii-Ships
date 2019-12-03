@@ -18,20 +18,7 @@ public class BossBehavior : MonoBehaviour
     public float flashLength = .1f;
     private float flashCounter;
     private SpriteRenderer sr;
-    [Header("Boss Death")]
-    public GameObject winScreen;
-    public GameObject[] endButtons = new GameObject[2];
-    public GameObject loseScreen;
-    public GameObject finalScore;
-    public GameObject endPanel;
-    private static BossBehavior instance;
-    public static BossBehavior Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +54,6 @@ public class BossBehavior : MonoBehaviour
             
         }
 
-        StartCoroutine(bossDeath());
 
     }
 
@@ -86,6 +72,10 @@ public class BossBehavior : MonoBehaviour
         else if (pattern == 3)
         {
             StartCoroutine(AttackPattern3());
+        }
+        else if(pattern == 4)
+        {
+            StartCoroutine(AttackPattern4());
         }
     }
 
@@ -172,27 +162,8 @@ public class BossBehavior : MonoBehaviour
 
     }
 
-    IEnumerator bossDeath()
-    {
-        yield return new WaitForSeconds(5f);
-        if(Movement.Instance.HP == 0)
-        {
-            endPanel.SetActive(true);
-            endButtons[0].SetActive(true);
-            endButtons[1].SetActive(true);
-            loseScreen.SetActive(true);
-            finalScore.SetActive(true);
-        }
-        else if (HP == 0)
-        {
-            endPanel.SetActive(true);
-            endButtons[0].SetActive(true);
-            endButtons[1].SetActive(true);
-            winScreen.SetActive(true);
-            finalScore.SetActive(true);
-        }
+   
 
-    }
 
 
 
@@ -212,6 +183,7 @@ public class BossBehavior : MonoBehaviour
         }
         else
         {
+            gameManager.GetComponent<AudioSource>().Play();
             Destroy(gameObject);
             Destroy(c.gameObject);
         }

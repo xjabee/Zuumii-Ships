@@ -8,6 +8,8 @@ TagManager:
   - bordertop
   - bordersides
   - boomer
+  - enemy
+  - borderbottom
   layers:
   - Default
   - TransparentFX

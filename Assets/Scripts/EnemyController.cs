@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -30,6 +30,10 @@ public class EnemyController : MonoBehaviour
         {
             transform.Translate(new Vector2(turnRateLeft, moveSpeed) * Time.deltaTime);
 
+        }
+        if(transform.position.x < -4 || transform.position.x > 3)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -63,7 +67,8 @@ public class EnemyController : MonoBehaviour
             Destroy(c.gameObject);
             Destroy(gameObject, .5f);
             ScoreManager.Instance.Score++;
-            Debug.Log("I got Hit!" + ScoreManager.Instance.Score);
+            GameManager.Instance.killCounter++;
+           // Debug.Log("I got Hit!" + ScoreManager.Instance.Score);
         }
     }
 }

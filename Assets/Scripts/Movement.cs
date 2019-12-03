@@ -18,20 +18,6 @@ public class Movement : MonoBehaviour
     public float flashLength = .1f;
     private float flashCounter;
     private SpriteRenderer sr;
-    [Header("Boss Death")]
-    public GameObject winScreen;
-    public GameObject[] endButtons = new GameObject[2];
-    public GameObject loseScreen;
-    public GameObject finalScore;
-    public GameObject endPanel;
-    private static Movement instance;
-    public static Movement Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
     void Start()
     {
         bulletSound = GetComponent<AudioSource>();
