@@ -4209,8 +4209,8 @@ MonoBehaviour:
   - {fileID: 569122639}
   finalScore: {fileID: 258217176}
   win: 0
-  winScreen: {fileID: 2077262076}
-  loseScreen: {fileID: 1972764114}
+  winScreen: {fileID: 1972764114}
+  loseScreen: {fileID: 2077262076}
 --- !u!4 &1987976459
 Transform:
   m_ObjectHideFlags: 0
