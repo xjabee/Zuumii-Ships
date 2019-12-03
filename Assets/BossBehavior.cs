@@ -4,18 +4,35 @@ using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
 {
+    [Header("Boss Attacks")]
     public GameObject Laser;
     public GameObject ball;
     public GameObject bubble;
     public GameObject gunners;
-    [SerializeField] private int HP = 50;
-    public Animator animator;
     public GameObject[] laserpos = new GameObject[4];
+    public Animator animator;
     public GameObject player;
+    [Header("Boss HP")]
+    public int HP = 250;
     private bool isDamaged;
     public float flashLength = .1f;
     private float flashCounter;
     private SpriteRenderer sr;
+    [Header("Boss Death")]
+    public GameObject winScreen;
+    public GameObject[] endButtons = new GameObject[2];
+    public GameObject loseScreen;
+    public GameObject finalScore;
+    public GameObject endPanel;
+    private static BossBehavior instance;
+    public static BossBehavior Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +66,9 @@ public class BossBehavior : MonoBehaviour
             flashCounter -= Time.deltaTime;
             
         }
+
+        StartCoroutine(bossDeath());
+
     }
 
     void attackController()
@@ -149,6 +169,28 @@ public class BossBehavior : MonoBehaviour
         yield return new WaitForSeconds(8f);
         laserAttack();
         yield return new WaitForSeconds(8f);
+
+    }
+
+    IEnumerator bossDeath()
+    {
+        yield return new WaitForSeconds(5f);
+        if(Movement.Instance.HP == 0)
+        {
+            endPanel.SetActive(true);
+            endButtons[0].SetActive(true);
+            endButtons[1].SetActive(true);
+            loseScreen.SetActive(true);
+            finalScore.SetActive(true);
+        }
+        else if (HP == 0)
+        {
+            endPanel.SetActive(true);
+            endButtons[0].SetActive(true);
+            endButtons[1].SetActive(true);
+            winScreen.SetActive(true);
+            finalScore.SetActive(true);
+        }
 
     }
 

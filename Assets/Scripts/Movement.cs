@@ -18,6 +18,20 @@ public class Movement : MonoBehaviour
     public float flashLength = .1f;
     private float flashCounter;
     private SpriteRenderer sr;
+    [Header("Boss Death")]
+    public GameObject winScreen;
+    public GameObject[] endButtons = new GameObject[2];
+    public GameObject loseScreen;
+    public GameObject finalScore;
+    public GameObject endPanel;
+    private static Movement instance;
+    public static Movement Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
     void Start()
     {
         bulletSound = GetComponent<AudioSource>();
@@ -75,6 +89,7 @@ public class Movement : MonoBehaviour
         allowfire = true;
     }
 
+
     private void OnCollisionEnter2D(Collision2D c)
     {
         if (HP > 1)
@@ -87,10 +102,18 @@ public class Movement : MonoBehaviour
                 isDamaged = true;
                 flashCounter = flashLength;
             }
-            
+            if (c.gameObject.tag == "boomer")
+            {
+                UIManager.Instance.HP[HP - 1].SetActive(false);
+                HP--;
+                Destroy(c.gameObject);
+                isDamaged = true;
+                flashCounter = flashLength;
+            }
         }
         else
         {
+            HP--;
             UIManager.Instance.HP[0].SetActive(false);
             Destroy(gameObject);
         }
